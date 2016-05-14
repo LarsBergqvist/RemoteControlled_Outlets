@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify, request
 from flask import render_template, redirect, url_for
 import pi_switch
 
@@ -16,8 +16,13 @@ byte2 = 0x15
 
 app = Flask(__name__)
 
-@app.route("/button/<int:buttonNumber>/<string:state>",methods=['GET'])
-def clickButton(buttonNumber,state):
+@app.route("/Outlets/",methods=["GET"])
+def index():
+    return render_template("index.html")
+
+@app.route("/Outlets/api/outlet/<int:buttonNumber>",methods=['PUT'])
+def clickButton(buttonNumber):
+    state=request.json.get("state")
     print(buttonNumber)
     print(state)
     idcode = buttonToIDCodesMap[buttonNumber]
@@ -29,12 +34,12 @@ def clickButton(buttonNumber,state):
     sender = pi_switch.RCSwitchSender()
     sender.enableTransmit(0)
     sender.sendDecimal(code,24)
-    return redirect(url_for('start'))
+    return state
 
-@app.route("/")
-def start():
-    return render_template('rcremote.html')
+#@app.route("/")
+#def start():
+#    return render_template('rcremote.html')
 
 if __name__ == "__main__":
-#    app.debug = True
+    app.debug = True
     app.run(host='0.0.0.0',port=5000)

@@ -1,0 +1,36 @@
+/* Styles go here */
+
+.playbutton {
+    display: block;
+    height: 25px;
+    background: #4E9CAF;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+  h1, h2, h3, h4, h5, h6 {
+        text-align: center;
+    }
+    
+.table tbody>tr>td.vert-align{
+    vertical-align: middle;
+}
+
+td {
+    font-size: 40px;
+}
+
+th {
+    font-size: 30px;
+}
+
+.table{
+    margin: auto;
+}
+
+form { 
+margin: 0 auto; 
+width:250px;
+}

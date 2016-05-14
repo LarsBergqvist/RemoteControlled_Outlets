@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+  <script data-require="angular.js@1.4.8" data-semver="1.4.8" src="https://code.angularjs.org/1.4.8/angular.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.css" />
+  <script src="/static/Controller.js"></script>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+
+<body>
+<div ng-controller="OutletController">
+  <div>
+    <h1 ng-bind="header"></h1>
+  </div>
+  <div>
+    <table class="table table-hover">
+      <thead class="thead-default">
+        <tr>
+          <th>On</th>
+          <th>Off</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in outlets">
+          <td class="vert-align">
+              <button class="btn btn-success btn-block" type="button" ng-bind="item.id" ng-click="pressButton(item.id,'on')"></button>
+          </td>
+          <td class="vert-align">
+              <button class="btn btn-warning btn-block" type="button" ng-bind="item.id" ng-click="pressButton(item.id,'off')"></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+
+</html>
