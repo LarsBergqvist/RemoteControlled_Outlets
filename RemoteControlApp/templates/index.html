@@ -5,7 +5,6 @@
   <script data-require="angular.js@1.4.8" data-semver="1.4.8" src="https://code.angularjs.org/1.4.8/angular.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.css" />
   <script src="/static/Controller.js"></script>
-  <link rel="stylesheet" href="/static/style.css" />
 </head>
 
 <body style="height: 100%">
@@ -24,10 +23,10 @@
       <tbody style="height: 100%">
         <tr ng-repeat="item in outlets">
           <td class="vert-align">
-              <button class="btn btn-success btn-block" style="font-size: 100px; display: block; height: 100%" type="button" ng-bind="item.id" ng-click="pressButton(item.id,'on')"></button>
+              <button class="btn btn-success btn-block" style="font-size: 50px; display: block; height: 100%" type="button" ng-bind="item.name + ' on'" ng-click="pressButton(item.id,'on')"></button>
           </td>
           <td class="vert-align">
-              <button class="btn btn-warning btn-block" style="font-size: 100px; display: block; height: 100%" type="button" ng-bind="item.id" ng-click="pressButton(item.id,'off')"></button>
+              <button class="btn btn-warning btn-block" style="font-size: 50px; display: block; height: 100%" type="button" ng-bind="item.name + ' off'" ng-click="pressButton(item.id,'off')"></button>
           </td>
         </tr>
       </tbody>
