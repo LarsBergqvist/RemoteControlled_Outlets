@@ -18,6 +18,10 @@
     vertical-align: middle;
 }
 
+button {
+    font-size: 100px;
+}
+
 td {
     font-size: 40px;
 }
