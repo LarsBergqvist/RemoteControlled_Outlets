@@ -1,20 +1,12 @@
-from flask import Flask, jsonify, request
-from flask import render_template, redirect, url_for
-import pi_switch
-
-buttonToIDCodesMap = { 
-1: 0x15,
-2: 0x45,
-3: 0x51,
-4: 0x54
-}
-
-byte0codeON = 0x55
-byte0codeOFF = 0x54
-
-byte2 = 0x15
+from flask import Flask, jsonify, request, render_template
+from outletdefinitions import outlets
+import codesender
 
 app = Flask(__name__)
+
+@app.route("/Outlets/api/outlets", methods=["GET"])
+def get_outlets():
+    return jsonify({"outlets" : outlets})
 
 @app.route("/Outlets/",methods=["GET"])
 def index():
@@ -25,20 +17,8 @@ def clickButton(buttonNumber):
     state=request.json.get("state")
     print(buttonNumber)
     print(state)
-    idcode = buttonToIDCodesMap[buttonNumber]
-    byte0code = byte0codeON
-    if state == 'off':
-        byte0code = byte0codeOFF
-    code = (byte2 << 16) | (idcode << 8) | byte0code
-    print(format(code,'000000x'))
-    sender = pi_switch.RCSwitchSender()
-    sender.enableTransmit(0)
-    sender.sendDecimal(code,24)
+    codesender.sendCode(buttonNumber,state)
     return state
-
-#@app.route("/")
-#def start():
-#    return render_template('rcremote.html')
 
 if __name__ == "__main__":
     app.debug = True
