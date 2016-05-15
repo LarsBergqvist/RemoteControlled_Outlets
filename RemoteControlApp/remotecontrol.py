@@ -12,7 +12,7 @@ def get_outlets():
 def index():
     return render_template("index.html")
 
-@app.route("/Outlets/api/outlet/<int:buttonNumber>",methods=['PUT'])
+@app.route("/Outlets/api/outlets/<int:buttonNumber>",methods=["PUT"])
 def clickButton(buttonNumber):
     state=request.json.get("state")
     print(buttonNumber)
@@ -22,4 +22,4 @@ def clickButton(buttonNumber):
 
 if __name__ == "__main__":
     app.debug = True
-    app.run(host='0.0.0.0',port=5000)
+    app.run(host="0.0.0.0",port=5000)
