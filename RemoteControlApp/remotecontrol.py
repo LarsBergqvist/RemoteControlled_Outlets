@@ -1,6 +1,10 @@
+#!/usr/bin/env python
+# coding=utf-8
+
 from flask import Flask, jsonify, request, render_template
 from outletdefinitions import outlets
 import codesender
+from mylogger import logger
 
 app = Flask(__name__)
 
@@ -15,8 +19,8 @@ def index():
 @app.route("/Outlets/api/outlets/<int:buttonNumber>",methods=["PUT"])
 def clickButton(buttonNumber):
     state=request.json.get("state")
-    print(buttonNumber)
-    print(state)
+    outletName = (item for item in outlets if item["id"] == "1").next()["name"]
+    logger.info(outletName + " state is now " + state)
     codesender.sendCode(buttonNumber,state)
     return state
 
