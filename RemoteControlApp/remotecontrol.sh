@@ -11,7 +11,7 @@
 # Description:       The service runs a Flask application that exposes a web api and an AngularJS app
 ### END INIT INFO
 
-DIR=/home/lestat/HomeAutomation/RemoteControlApp
+DIR=/home/[USER]/HomeAutomation/RemoteControlApp
 DAEMON=$DIR/remotecontrol.py
 DAEMON_NAME=remotecontrol
 DAEMON_OPTS=""
