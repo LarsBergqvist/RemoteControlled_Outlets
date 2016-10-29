@@ -2,10 +2,12 @@
 <html ng-app="myApp" style="height: 100%">
 
 <head>
-  <script data-require="angular.js@1.4.8" data-semver="1.4.8" src="https://code.angularjs.org/1.4.8/angular.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.css" />
+  <script src="/static/node_modules/angular/angular.min.js"></script>
+  <link rel="stylesheet" href="/static/node_modules/bootstrap/dist/css/bootstrap.css" />
   <script src="/static/Controller.js"></script>
 </head>
+
+
 
 <body style="height: 100%">
 <div ng-controller="OutletController" style="height: 100%">
@@ -14,10 +16,10 @@
       <tbody style="height: 100%">
         <tr ng-repeat="item in outlets">
           <td class="vert-align">
-              <button class="btn btn-success btn-block" style="font-size: 60px; display: block; height: 100%" type="button" ng-bind="item.name + ' on'" ng-click="pressButton(item.id,'on')"></button>
+              <button class="btn btn-success btn-block" style="font-size: 60px; display: block; height: 100%" type="button" ng-bind="item.name + ' på'" ng-click="pressButton(item.groupNumber,item.buttonNumber,'on')"></button>
           </td>
           <td class="vert-align">
-              <button class="btn btn-warning btn-block" style="font-size: 60px; display: block; height: 100%" type="button" ng-bind="item.name + ' off'" ng-click="pressButton(item.id,'off')"></button>
+              <button class="btn btn-warning btn-block" style="font-size: 60px; display: block; height: 100%" type="button" ng-bind="item.name + ' av'" ng-click="pressButton(item.groupNumber,item.buttonNumber,'off')"></button>
           </td>
         </tr>
       </tbody>

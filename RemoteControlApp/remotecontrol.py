@@ -4,7 +4,6 @@
 from flask import Flask, jsonify, request, render_template
 from outletdefinitions import outlets
 import codesender
-from mylogger import logger
 
 app = Flask(__name__)
 
@@ -16,12 +15,12 @@ def get_outlets():
 def index():
     return render_template("index.html")
 
-@app.route("/Outlets/api/outlets/<int:buttonNumber>",methods=["PUT"])
-def clickButton(buttonNumber):
+@app.route("/Outlets/api/outlets/<int:groupNumber>/<int:buttonNumber>",methods=["PUT"])
+def clickButton(groupNumber, buttonNumber):
     state=request.json.get("state")
-    outletName = (item for item in outlets if item["id"] == "1").next()["name"]
-    logger.info(outletName + " state is now " + state)
-    codesender.sendCode(buttonNumber,state)
+    if (state is None):
+        return "0"
+    codesender.sendCode(groupNumber,buttonNumber,state)
     return state
 
 if __name__ == "__main__":

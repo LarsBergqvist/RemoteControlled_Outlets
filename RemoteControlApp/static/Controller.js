@@ -12,8 +12,8 @@ myApp.controller('OutletController', ['$scope', '$http', function($scope, $http)
         );
     };
   
-    $scope.pressButton = function(id,action) {
-        $http.put("api/outlets/"+id, { state : action}).then(function(response) {
+    $scope.pressButton = function(groupNumber,buttonNumber,action) {
+        $http.put("api/outlets/"+groupNumber+"/"+buttonNumber, { state : action}).then(function(response) {
         }, function(error) {}
         );
     }

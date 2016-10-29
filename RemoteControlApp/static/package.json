@@ -1,0 +1,8 @@
+{
+  "name": "RemoteControlledOutlets",
+  "version": "1.0.0",
+  "dependencies": {
+    "angular": "^1.4.8",
+    "bootstrap": "^3.3.7"
+  }
+}
