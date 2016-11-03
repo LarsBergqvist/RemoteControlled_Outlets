@@ -19,8 +19,14 @@ buttonToCodeMap = {
 }
 
 def sendCode(groupNumber,buttonNumber,state):
+    if not buttonNumber in buttonToCodeMap.keys():
+        return
+    if not groupNumber in groupToCodeMap.keys():
+        return
+
     numberCode = buttonToCodeMap[buttonNumber]
     groupCode = groupToCodeMap[groupNumber]
+
     byte0code = byte0codeON
     if state == 'off':
         byte0code = byte0codeOFF
