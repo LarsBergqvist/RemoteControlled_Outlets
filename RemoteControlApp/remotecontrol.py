@@ -19,7 +19,10 @@ def index():
 def clickButton(groupNumber, buttonNumber):
     state=request.json.get("state")
     if (state is None):
-        return "0"
+        abort(400)
+    if (state.lower() != 'on' and state.lower() != 'off'):
+        abort(400)
+        
     codesender.sendCode(groupNumber,buttonNumber,state)
     return state
 
