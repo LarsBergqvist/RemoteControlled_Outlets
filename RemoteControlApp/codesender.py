@@ -1,4 +1,4 @@
-import pi_switch
+from rpi_rf import RFDevice
 from mylogger import logger
 
 byte0codeON = 0x55
@@ -32,6 +32,7 @@ def sendCode(groupNumber,buttonNumber,state):
         byte0code = byte0codeOFF
     code = (groupCode << 16) | (numberCode << 8) | byte0code
     logger.info("Sending code: " + format(code,'000000x'))
-    sender = pi_switch.RCSwitchSender()
-    sender.enableTransmit(0)
-    sender.sendDecimal(code,24)
+    sender = RFDevice(17)
+    sender.enable_tx()
+    sender.tx_code(code)
+    sender.cleanup()
