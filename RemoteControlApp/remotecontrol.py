@@ -26,7 +26,7 @@ def update_outlet_state(groupNumber, buttonNumber):
     if request.json is not None:
         state=request.json.get("state")
     else:
-        state=request.data
+        state=request.data.decode("utf-8")
 
     if (state is None):
         abort(400)
