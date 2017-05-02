@@ -1,5 +1,5 @@
 # RemoteControlled_Outlets
-A Raspberry Pi web app with Flask and Python that lets the user switch 433 Mhz outlets on and off from a browser. The project is explained in detail in these blog posts:
+A Raspberry Pi web app with Flask and Python that lets the user switch 433 MHz outlets on and off from a browser. The project is explained in detail in these blog posts:
 <p>
 https://larsbergqvist.wordpress.com/2016/05/15/rcswitch-revisited-control-rc-outlets-with-a-web-app/
 <p>
