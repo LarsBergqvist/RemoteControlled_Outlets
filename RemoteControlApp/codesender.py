@@ -39,5 +39,4 @@ def sendCode(groupNumber,buttonNumber,state):
     # sender.tx_code(code, protocol, pulse)
     sender.cleanup()
 
-def mySendCodeNew(code, protocol=1, state):
-    
+# def mySendCodeNew(code, protocol=1, state):
