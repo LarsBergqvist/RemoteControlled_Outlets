@@ -14,7 +14,7 @@ def sendCode(buttonNumber,state):
     elif state == 'on':
             code = validButton['codeOn']
 
-    logger.info("Sending code: " + code)
+    logger.info("Sending code: " + str(code))
     sender = RFDevice(17)
     sender.enable_tx()
     sender.tx_code(code, 1, pulse)
