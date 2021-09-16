@@ -15,7 +15,7 @@ def get_outlets():
 def index():
     return render_template("index.html")
 
-@app.route("/Outlets/api/outlets//<int:buttonNumber>",methods=["GET"])
+@app.route("/Outlets/api/outlets/<int:buttonNumber>",methods=["GET"])
 def get_outlet_state(buttonNumber):
 
     return statestorage.get_state(buttonNumber)
