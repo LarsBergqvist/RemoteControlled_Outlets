@@ -3,8 +3,7 @@ from rpi_rf import RFDevice
 from mylogger import logger
 from outletdefinitions import outlets
 
-def sendCode(buttonNumber,state):
-    pulse = 185
+def sendCode(buttonNumber,state, pulse):
     validButton = next((sub for sub in outlets if sub['buttonNumber'] == buttonNumber), None)
     if(validButton == "None"):
         return
@@ -14,6 +13,8 @@ def sendCode(buttonNumber,state):
     elif state == 'on':
             code = validButton['codeOn']
 
+    pulse = validButton['pulse']
+    
     logger.info("Sending code: " + str(code))
     sender = RFDevice(17)
     sender.enable_tx()

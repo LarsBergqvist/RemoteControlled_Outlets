@@ -1,15 +1,10 @@
 # coding=utf-8
-# outlets = [
-# {"buttonNumber":"1","groupNumber":"1","name":u"Left bedroom"},
-# {"buttonNumber":"2","groupNumber":"1","name":u"Right bedroom"},
-# {"buttonNumber":"3","groupNumber":"1","name":u"Wall bedroom"},
-# {"buttonNumber":"4","groupNumber":"1","name":u"Left living room "},
-# {"buttonNumber":"5","groupNumber":"1","name":u"Right living room"}
-# ]
+
 outlets = [
-{"buttonNumber": 1, "codeOn": 5330227,"codeOff": 5330236},
-{"buttonNumber": 2, "codeOn": 5330371,"codeOff": 5330380},
-{"buttonNumber": 3, "codeOn": 5330691,"codeOff": 5330700},
-{"buttonNumber": 4, "codeOn": 5332227,"codeOff": 5332236},
-{"buttonNumber": 5, "codeOn": 5338371,"codeOff": 5338380},
+{"buttonNumber": 1, "codeOn": 5330227,"codeOff": 5330236, "pulse": 185},
+{"buttonNumber": 2, "codeOn": 5330371,"codeOff": 5330380, "pulse": 185},
+{"buttonNumber": 3, "codeOn": 5330691,"codeOff": 5330700, "pulse": 185},
+{"buttonNumber": 4, "codeOn": 5332227,"codeOff": 5332236, "pulse": 185},
+{"buttonNumber": 5, "codeOn": 5338371,"codeOff": 5338380, "pulse": 185},
+{"buttonNumber": 7, "codeOn": 1136067,"codeOff": 1136076, "pulse": 197},
 ]
