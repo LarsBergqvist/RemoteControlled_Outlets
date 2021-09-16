@@ -1,42 +1,22 @@
 from typing_extensions import Protocol
 from rpi_rf import RFDevice
 from mylogger import logger
+from outletdefinitions import outlets
 
-byte0codeON = 0x55
-byte0codeOFF = 0x54
-
-groupToCodeMap = {
-1: 0x15,
-2: 0x45,
-3: 0x51,
-4: 0x54
-}
-
-buttonToCodeMap = { 
-1: 0x15,
-2: 0x45,
-3: 0x51,
-4: 0x54
-}
-
-def sendCode(groupNumber,buttonNumber,state):
-    if not buttonNumber in buttonToCodeMap.keys():
-        return
-    if not groupNumber in groupToCodeMap.keys():
+def sendCode(buttonNumber,state):
+    pulse = 185
+    validButton = next((sub for sub in outlets if sub['buttonNumber'] == buttonNumber), None)
+    if(validButton == "None"):
         return
 
-    numberCode = buttonToCodeMap[buttonNumber]
-    groupCode = groupToCodeMap[groupNumber]
-
-    byte0code = byte0codeON
     if state == 'off':
-        byte0code = byte0codeOFF
-    code = (groupCode << 16) | (numberCode << 8) | byte0code
-    logger.info("Sending code: " + format(code,'000000x'))
+        code = validButton['codeOff']
+    elif state == 'on':
+            code = validButton['codeOn']
+
+    logger.info("Sending code: " + code)
     sender = RFDevice(17)
     sender.enable_tx()
-    sender.tx_code(code)
+    sender.tx_code(code, 1, pulse)
     # sender.tx_code(code, protocol, pulse)
     sender.cleanup()
-
-# def mySendCodeNew(code, protocol=1, state):

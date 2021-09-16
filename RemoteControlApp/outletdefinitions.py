@@ -7,9 +7,9 @@
 # {"buttonNumber":"5","groupNumber":"1","name":u"Right living room"}
 # ]
 outlets = [
-{"1": {"codeOn":"5330227","codeOff":"5330236"}},
-{"2": {"codeOn":"5330371","codeOff":"5330380"}},
-{"3": {"codeOn":"5330691","codeOff":"5330700"}},
-{"4": {"codeOn":"5332227","codeOff":"5332236"}},
-{"5": {"codeOn":"5338371","codeOff":"5338380"}},
+{"buttonNumber": 1, "codeOn": 5330227,"codeOff": 5330236},
+{"buttonNumber": 2, "codeOn": 5330371,"codeOff": 5330380},
+{"buttonNumber": 3, "codeOn": 5330691,"codeOff": 5330700},
+{"buttonNumber": 4, "codeOn": 5332227,"codeOff": 5332236},
+{"buttonNumber": 5, "codeOn": 5338371,"codeOff": 5338380},
 ]

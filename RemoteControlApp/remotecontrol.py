@@ -18,10 +18,10 @@ def index():
 @app.route("/Outlets/api/outlets/<int:groupNumber>/<int:buttonNumber>",methods=["GET"])
 def get_outlet_state(groupNumber, buttonNumber):
 
-    return statestorage.get_state(groupNumber, buttonNumber)
+    return statestorage.get_state(buttonNumber)
 
-@app.route("/Outlets/api/outlets/<int:groupNumber>/<int:buttonNumber>",methods=["PUT","POST"])
-def update_outlet_state(groupNumber, buttonNumber):
+@app.route("/Outlets/api/outlets/<int:buttonNumber>",methods=["PUT","POST"])
+def update_outlet_state(buttonNumber):
     state=None
     if request.json is not None:
         state=request.json.get("state")
@@ -33,8 +33,8 @@ def update_outlet_state(groupNumber, buttonNumber):
     if (state.lower() != 'on' and state.lower() != 'off'):
         abort(400)
 
-    statestorage.set_state(groupNumber, buttonNumber, state)
-    codesender.sendCode(groupNumber, buttonNumber, state)
+    statestorage.set_state(buttonNumber, state)
+    codesender.sendCode(buttonNumber, state)
     return state
 
 if __name__ == "__main__":

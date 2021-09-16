@@ -4,8 +4,8 @@ states = {}
 
 lock = threading.Lock()
 
-def get_state(groupNumber, buttonNumber):
-    key = str(groupNumber) + '_' + str(buttonNumber)
+def get_state(buttonNumber):
+    key = str(buttonNumber)
     state = 'off'
     lock.acquire()
     try:
@@ -16,8 +16,8 @@ def get_state(groupNumber, buttonNumber):
 
     return state
 
-def set_state(groupNumber, buttonNumber, state):
-    key = str(groupNumber) + '_' + str(buttonNumber)
+def set_state(buttonNumber, state):
+    key = str(buttonNumber)
 
     lock.acquire()
     try:
