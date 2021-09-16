@@ -1,3 +1,4 @@
+from typing import Protocol
 from rpi_rf import RFDevice
 from mylogger import logger
 
@@ -35,4 +36,5 @@ def sendCode(groupNumber,buttonNumber,state):
     sender = RFDevice(17)
     sender.enable_tx()
     sender.tx_code(code)
+    # sender.tx_code(code, protocol, pulse)
     sender.cleanup()

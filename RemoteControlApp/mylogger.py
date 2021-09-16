@@ -23,6 +23,9 @@ class STDLogger(object):
         def write(self, message):
                 if message.rstrip() != "":
                         self.logger.log(self.level, message.rstrip())
+
+        def flush():
+                pass
 					
 
 sys.stdout = STDLogger(logger, logging.INFO)
