@@ -1,4 +1,4 @@
-from typing import Protocol
+from typing_extensions import Protocol
 from rpi_rf import RFDevice
 from mylogger import logger
 

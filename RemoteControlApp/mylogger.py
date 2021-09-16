@@ -24,7 +24,7 @@ class STDLogger(object):
                 if message.rstrip() != "":
                         self.logger.log(self.level, message.rstrip())
 
-        def flush():
+        def flush(self):
                 pass
 					
 
