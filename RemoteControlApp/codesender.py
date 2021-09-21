@@ -2,7 +2,9 @@ from typing_extensions import Protocol
 from rpi_rf import RFDevice
 from mylogger import logger
 from outletdefinitions import outlets
+from flask import current_app
 
+@rq.job
 def sendCode(buttonNumber,state):
     validButton = next((sub for sub in outlets if sub['buttonNumber'] == buttonNumber), None)
     if(validButton == "None"):

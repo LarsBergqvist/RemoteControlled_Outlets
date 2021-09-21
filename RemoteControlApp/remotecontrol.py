@@ -4,8 +4,12 @@
 from flask import Flask, jsonify, request, render_template, abort
 from outletdefinitions import outlets
 import codesender, statestorage
+from flask_rq2 import RQ
+
+
 
 app = Flask(__name__)
+rq = RQ(app)
 
 @app.route("/Outlets/api/outlets", methods=["GET"])
 def get_outlets():
@@ -34,7 +38,7 @@ def update_outlet_state(buttonNumber):
         abort(400)
 
     statestorage.set_state(buttonNumber, state)
-    codesender.sendCode(buttonNumber, state)
+    codesender.sendCode.queue(buttonNumber, state)
     return state
 
 if __name__ == "__main__":
