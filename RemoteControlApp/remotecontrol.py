@@ -4,12 +4,10 @@
 from flask import Flask, jsonify, request, render_template, abort
 from outletdefinitions import outlets
 import codesender, statestorage
-from flask_rq2 import RQ
 
 
 
 app = Flask(__name__)
-rq = RQ(app)
 
 @app.route("/Outlets/api/outlets", methods=["GET"])
 def get_outlets():

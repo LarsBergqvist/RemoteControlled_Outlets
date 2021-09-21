@@ -3,6 +3,9 @@ from rpi_rf import RFDevice
 from mylogger import logger
 from outletdefinitions import outlets
 from flask import current_app
+from flask_rq2 import RQ
+
+rq = RQ(app)
 
 @rq.job
 def sendCode(buttonNumber,state):
