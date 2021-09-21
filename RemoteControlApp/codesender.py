@@ -5,7 +5,7 @@ from outletdefinitions import outlets
 from flask import current_app
 from flask_rq2 import RQ
 
-rq = RQ(app)
+rq = RQ(current_app.app)
 
 @rq.job
 def sendCode(buttonNumber,state):
