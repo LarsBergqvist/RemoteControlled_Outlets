@@ -6,3 +6,81 @@ https://larsbergqvist.wordpress.com/2016/05/15/rcswitch-revisited-control-rc-out
 https://larsbergqvist.wordpress.com/2016/11/03/preparing-the-remote-control-app-for-christmas/
 
 ![Alt text](https://larsbergqvist.files.wordpress.com/2016/05/remote_and_iphoneapp.jpg?w=660 "Remote control")
+
+Enable the Python Redis Queue worker
+
+1. Edit rqworker@.service file
+
+WorkingDirectory value should be set to the filesystem location where the codesender.py and other python modules resides.
+Example:
+WorkingDirectory=/var/www/RemoteControlled_Outlets/RemoteControlApp
+
+ExecStart value should begin with the full filesystem path for rq binary. You can find the path by executing whereis rq command in the shell. -c paramter should point to path to config file (usually in the same location as the value of WorkingDirectory key)
+Example:
+ExecStart=/usr/local/bin/rq worker --with-scheduler -c config
+
+Copy the rqworker file to the usual file system location for systemd services
+Example:
+sudo cp RemoteControlApp/rqworker@.service /etc/systemd/system/
+
+If any previously enabled rqworker service exists, then first disable it.
+Example:
+sudo systemctl disable rqworker@service
+
+Output of the command should be similar to:
+Removed /etc/systemd/system/multi-user.target.wants/rqworker@service.service.
+
+Enable the service
+Example:
+sudo systemctl enable rqworker@service
+
+Output of the command should be similar to:
+Created symlink /etc/systemd/system/multi-user.target.wants/rqworker@service.service → /etc/systemd/system/rqworker@.service.
+
+Start the rq worker service
+Example:
+sudo systemctl start rqworker@service.service
+
+Check rq worker service status:
+Example:
+sudo systemctl status rqworker@service.service
+
+Output of the command should be similar to:
+● rqworker@service.service - RQ Worker Number service
+   Loaded: loaded (/etc/systemd/system/rqworker@.service; enabled; vendor preset: enabled)
+   Active: active (running) since Wed 2021-09-22 15:54:35 BST; 6s ago
+ Main PID: 12172 (rq)
+    Tasks: 3 (limit: 2059)
+   CGroup: /system.slice/system-rqworker.slice/rqworker@service.service
+           ├─12172 /usr/bin/python3 /usr/local/bin/rq worker --with-scheduler -c config
+           └─12174 /usr/bin/python3 /usr/local/bin/rq worker --with-scheduler -c config
+
+Sep 22 15:54:35 raspberrypi systemd[1]: Started RQ Worker Number service.
+Sep 22 15:54:36 raspberrypi rq[12172]: 15:54:36 Worker rq:worker:dd96743948354302a855dc879cee40a6: started, version 1.10.0
+Sep 22 15:54:36 raspberrypi rq[12172]: 15:54:36 Subscribing to channel rq:pubsub:dd96743948354302a855dc879cee40a6
+Sep 22 15:54:36 raspberrypi rq[12172]: 15:54:36 *** Listening on default...
+Sep 22 15:54:36 raspberrypi rq[12172]: 15:54:36 Trying to acquire locks for default
+Sep 22 15:54:36 raspberrypi rq[12172]: 15:54:36 Cleaning registries for queue: default
+Sep 22 15:54:36 raspberrypi rq[12172]: 15:54:36 Scheduler for default started with PID 12174
+
+Check in syslog if rq worker is processing the queued jobs
+
+sudo tail -100f /var/log/syslog
+Sep 22 17:30:08 raspberrypi rq[12172]: 17:30:08 default: codesender.sendCode(2, 'off') (49554791-3c89-41e2-bc43-1816c5fc933c)
+Sep 22 17:30:10 raspberrypi rq[12172]: 17:30:10 default: Job OK (49554791-3c89-41e2-bc43-1816c5fc933c)
+Sep 22 17:30:10 raspberrypi rq[12172]: 17:30:10 Result is kept for 500 seconds
+Sep 22 17:30:16 raspberrypi rq[12172]: 17:30:16 default: codesender.sendCode(3, 'on') (ef4b32b4-6d49-4d50-830b-89acb452a586)
+Sep 22 17:30:17 raspberrypi rq[12172]: 17:30:17 default: Job OK (ef4b32b4-6d49-4d50-830b-89acb452a586)
+Sep 22 17:30:17 raspberrypi rq[12172]: 17:30:17 Result is kept for 500 seconds
+Sep 22 17:30:17 raspberrypi rq[12172]: 17:30:17 default: codesender.sendCode(1, 'on') (e53a7e92-c4f2-45a7-b300-ce43964be10c)
+Sep 22 17:30:19 raspberrypi rq[12172]: 17:30:19 default: Job OK (e53a7e92-c4f2-45a7-b300-ce43964be10c)
+Sep 22 17:30:19 raspberrypi rq[12172]: 17:30:19 Result is kept for 500 seconds
+Sep 22 17:30:19 raspberrypi rq[12172]: 17:30:19 default: codesender.sendCode(2, 'on') (36b85e29-46b9-4e78-82a2-607016945745)
+Sep 22 17:30:20 raspberrypi rq[12172]: 17:30:20 default: Job OK (36b85e29-46b9-4e78-82a2-607016945745)
+Sep 22 17:30:20 raspberrypi rq[12172]: 17:30:20 Result is kept for 500 seconds
+
+
+
+
+
+
