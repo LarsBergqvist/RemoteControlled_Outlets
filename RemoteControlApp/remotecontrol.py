@@ -3,7 +3,6 @@
 
 from flask import Flask, jsonify, request, render_template, abort
 from outletdefinitions import outlets
-import codesender, statestorage
 from flask_rq2 import RQ
 
 
@@ -19,10 +18,14 @@ def get_outlets():
 def index():
     return render_template("index.html")
 
+import statestorage
+
 @app.route("/Outlets/api/outlets/<int:buttonNumber>",methods=["GET"])
 def get_outlet_state(buttonNumber):
 
     return statestorage.get_state(buttonNumber)
+
+import codesender
 
 @app.route("/Outlets/api/outlets/<int:buttonNumber>",methods=["PUT","POST"])
 def update_outlet_state(buttonNumber):
