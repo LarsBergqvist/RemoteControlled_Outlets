@@ -25,6 +25,10 @@ def get_outlet_state(buttonNumber):
 
     return statestorage.get_state(buttonNumber)
 
+# 
+# importing codesender library only here due to circular dependency error when importing at the beginning og the file
+# https://stackoverflow.com/questions/43077599/flask-circular-dependency
+#
 import codesender
 
 @app.route("/Outlets/api/outlets/<int:buttonNumber>",methods=["PUT","POST"])
