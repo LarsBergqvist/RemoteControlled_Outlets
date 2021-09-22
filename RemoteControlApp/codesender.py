@@ -2,10 +2,7 @@ from typing_extensions import Protocol
 from rpi_rf import RFDevice
 from mylogger import logger
 from outletdefinitions import outlets
-from flask import current_app
-from flask_rq2 import RQ
-
-rq = RQ(current_app.app)
+from remotecontrol import rq
 
 @rq.job
 def sendCode(buttonNumber,state):
