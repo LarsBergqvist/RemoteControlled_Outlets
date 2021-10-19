@@ -22,8 +22,10 @@ import statestorage
 
 @app.route("/Outlets/api/outlets/<int:buttonNumber>",methods=["GET"])
 def get_outlet_state(buttonNumber):
-
-    return statestorage.get_state(buttonNumber)
+    if request.is_json:
+        return jsonify({"state" : statestorage.get_state(buttonNumber)}) 
+    else:
+        return statestorage.get_state(buttonNumber)
 
 # 
 # importing codesender library only here due to circular dependency error when importing at the beginning og the file
@@ -46,7 +48,11 @@ def update_outlet_state(buttonNumber):
 
     statestorage.set_state(buttonNumber, state)
     codesender.sendCode.queue(buttonNumber, state)
-    return state
+
+    if request.is_json:
+        return jsonify({"state" : statestorage.get_state(buttonNumber)}) 
+    else:
+        return statestorage.get_state(buttonNumber)
 
 if __name__ == "__main__":
     app.debug = True

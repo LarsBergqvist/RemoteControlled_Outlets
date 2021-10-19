@@ -7,6 +7,43 @@ https://larsbergqvist.wordpress.com/2016/11/03/preparing-the-remote-control-app-
 
 ![Alt text](https://larsbergqvist.files.wordpress.com/2016/05/remote_and_iphoneapp.jpg?w=660 "Remote control")
 
+Testing the Flask application (smth like a dev environment)
+
+1. Create a local directory for example ~/git
+
+2. Navigate to the newly created dir
+
+cd git/
+
+3. Clone the repo
+
+sudo git clone https://github.com/andreimoraru/RemoteControlled_Outlets.git
+
+cd RemoteControlled_Outlets/
+
+4. Have a look at the existing remote branches
+
+sudo git branch -r
+
+5. Checkout to the required branch:
+
+sudo git checkout feature/multiple-lights-at-once
+
+6. If virtual environment exists, then skip this step. If not, proceed with it.
+
+sudo virtualenv venv
+
+7. activate virtual environment
+
+source venv/bin/activate
+
+8. Run the project. The command will keep the shell busy while running. You can open another shell over another SSH connection
+sudo python3 RemoteControlApp/remotecontrol.py
+
+9. Check the logs:
+tail -f /tmp/remotecontrol.log
+
+
 Enable the Python Redis Queue worker
 
 1. Edit rqworker@.service file
