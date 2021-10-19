@@ -7,6 +7,65 @@ https://larsbergqvist.wordpress.com/2016/11/03/preparing-the-remote-control-app-
 
 ![Alt text](https://larsbergqvist.files.wordpress.com/2016/05/remote_and_iphoneapp.jpg?w=660 "Remote control")
 
+
+
+Docs for RESTfull switch
+https://www.home-assistant.io/integrations/switch.rest/
+
+Example of RESTful switch
+https://git.digitaal-rechercheurs.nl/squandor/homeassistant/raw/commit/9bd167ddb44465b63f9d40775514c88142783bc3/configurations/switches/rest_switches.yaml
+
+```yaml
+- platform: rest
+  resource: http://192.168.1.6/Outlets/api/outlets/2
+  name: "Bedroom Left Light"
+  body_on: '{"state": "on"}'
+  body_off: '{"state": "off"}'
+  is_on_template: '{% if value_json.state == "on" %} True {% else %} False {% endif %}'
+  headers:
+    Content-Type: application/json
+```
+
+Example of light template
+https://www.home-assistant.io/integrations/light.template/
+Pay attention to value_template
+
+```yaml
+- platform: template
+  lights:
+    bedroom_left_light:
+      friendly_name: "Bedroom Left Light"
+      value_template: >-
+        {% if is_state('switch.bedroom_left_light', 'on') %} on {% else %} off {% endif%}
+      turn_on:
+        service: switch.turn_on
+        entity_id: switch.bedroom_left_light
+      turn_off:
+        service: switch.turn_off
+        entity_id: switch.bedroom_left_light
+```
+
+Allow non-root access to Raspberry Pi pins
+
+```sh
+sudo usermod -a -G gpio www-data
+sudo chown root.gpio /dev/mem && sudo chmod g+rw /dev/mem
+```
+
+
+Install Python and python modules pre-requisites
+
+apt install python3
+sudo apt install pip3
+sudo apt install python3-pip
+sudo pip3 install rpi-rf
+sudo pip3 install flask
+sudo pip3 install Flask
+sudo pip3 install typing-extensions
+sudo pip3 install redis
+sudo pip3 install rq
+sudo pip3 install Flask-RQ2
+
 Testing the Flask application (smth like a dev environment)
 
 1. Create a local directory for example ~/git
@@ -25,7 +84,7 @@ cd RemoteControlled_Outlets/
 
 sudo git branch -r
 
-5. Checkout to the required branch:
+5. Checkout to the required branch, for example feature/multiple-lights-at-once branch:
 
 sudo git checkout feature/multiple-lights-at-once
 
@@ -43,6 +102,11 @@ sudo python3 RemoteControlApp/remotecontrol.py
 9. Check the logs:
 tail -f /tmp/remotecontrol.log
 
+10. In order to stop the Flask embedded server, hit Ctrl-C
+
+11. When done, deactivate the virtual environment
+
+deactivate
 
 Enable the Python Redis Queue worker
 

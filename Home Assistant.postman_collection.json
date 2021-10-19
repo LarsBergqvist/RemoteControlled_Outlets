@@ -15,7 +15,13 @@
 							"name": "state",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
 									"raw": "{{network_protocol}}://{{ip_address}}:{{network_port}}/Outlets/api/outlets/{{outlet_key}}",
 									"protocol": "{{network_protocol}}",
@@ -40,7 +46,13 @@
 							},
 							"request": {
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
 									"raw": "{\"state\": \"on\"}",
@@ -74,7 +86,13 @@
 							},
 							"request": {
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
 									"raw": "{\"state\": \"off\"}",
@@ -217,7 +235,13 @@
 									"name": "state",
 									"request": {
 										"method": "GET",
-										"header": [],
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
 										"url": {
 											"raw": "{{network_protocol}}://{{ip_address}}:{{network_port}}/Outlets/api/outlets/{{outlet_key}}",
 											"protocol": "{{network_protocol}}",
@@ -242,7 +266,13 @@
 									},
 									"request": {
 										"method": "POST",
-										"header": [],
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
 										"body": {
 											"mode": "raw",
 											"raw": "{\"state\": \"on\"}",
@@ -276,7 +306,13 @@
 									},
 									"request": {
 										"method": "POST",
-										"header": [],
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
 										"body": {
 											"mode": "raw",
 											"raw": "{\"state\": \"off\"}",
@@ -454,7 +490,7 @@
 			]
 		},
 		{
-			"name": "Bedroom wall light",
+			"name": "Bedroom left light",
 			"item": [
 				{
 					"name": "json",
@@ -463,7 +499,13 @@
 							"name": "state",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
 									"raw": "{{network_protocol}}://{{ip_address}}:{{network_port}}/Outlets/api/outlets/{{outlet_key}}",
 									"protocol": "{{network_protocol}}",
@@ -488,7 +530,13 @@
 							},
 							"request": {
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
 									"raw": "{\"state\": \"on\"}",
@@ -522,7 +570,497 @@
 							},
 							"request": {
 								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"state\": \"off\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{network_protocol}}://{{ip_address}}:{{network_port}}/Outlets/api/outlets/{{outlet_key}}",
+									"protocol": "{{network_protocol}}",
+									"host": [
+										"{{ip_address}}"
+									],
+									"port": "{{network_port}}",
+									"path": [
+										"Outlets",
+										"api",
+										"outlets",
+										"{{outlet_key}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "data",
+					"item": [
+						{
+							"name": "on",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
 								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "on",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{network_protocol}}://{{ip_address}}:{{network_port}}/Outlets/api/outlets/{{outlet_key}}",
+									"protocol": "{{network_protocol}}",
+									"host": [
+										"{{ip_address}}"
+									],
+									"port": "{{network_port}}",
+									"path": [
+										"Outlets",
+										"api",
+										"outlets",
+										"{{outlet_key}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "off",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "off",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{network_protocol}}://{{ip_address}}:{{network_port}}/Outlets/api/outlets/{{outlet_key}}",
+									"protocol": "{{network_protocol}}",
+									"host": [
+										"{{ip_address}}"
+									],
+									"port": "{{network_port}}",
+									"path": [
+										"Outlets",
+										"api",
+										"outlets",
+										"{{outlet_key}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "state",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{network_protocol}}://{{ip_address}}:{{network_port}}/Outlets/api/outlets/{{outlet_key}}",
+									"protocol": "{{network_protocol}}",
+									"host": [
+										"{{ip_address}}"
+									],
+									"port": "{{network_port}}",
+									"path": [
+										"Outlets",
+										"api",
+										"outlets",
+										"{{outlet_key}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Bedroom left light",
+					"item": [
+						{
+							"name": "json",
+							"item": [
+								{
+									"name": "state",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{network_protocol}}://{{ip_address}}:{{network_port}}/Outlets/api/outlets/{{outlet_key}}",
+											"protocol": "{{network_protocol}}",
+											"host": [
+												"{{ip_address}}"
+											],
+											"port": "{{network_port}}",
+											"path": [
+												"Outlets",
+												"api",
+												"outlets",
+												"{{outlet_key}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "on",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {}
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"state\": \"on\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{network_protocol}}://{{ip_address}}:{{network_port}}/Outlets/api/outlets/{{outlet_key}}",
+											"protocol": "{{network_protocol}}",
+											"host": [
+												"{{ip_address}}"
+											],
+											"port": "{{network_port}}",
+											"path": [
+												"Outlets",
+												"api",
+												"outlets",
+												"{{outlet_key}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "off",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {}
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"state\": \"off\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{network_protocol}}://{{ip_address}}:{{network_port}}/Outlets/api/outlets/{{outlet_key}}",
+											"protocol": "{{network_protocol}}",
+											"host": [
+												"{{ip_address}}"
+											],
+											"port": "{{network_port}}",
+											"path": [
+												"Outlets",
+												"api",
+												"outlets",
+												"{{outlet_key}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "data",
+							"item": [
+								{
+									"name": "on",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"content-type": true
+										}
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "on",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{network_protocol}}://{{ip_address}}:{{network_port}}/Outlets/api/outlets/{{outlet_key}}",
+											"protocol": "{{network_protocol}}",
+											"host": [
+												"{{ip_address}}"
+											],
+											"port": "{{network_port}}",
+											"path": [
+												"Outlets",
+												"api",
+												"outlets",
+												"{{outlet_key}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "off",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"content-type": true
+										}
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "off",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{network_protocol}}://{{ip_address}}:{{network_port}}/Outlets/api/outlets/{{outlet_key}}",
+											"protocol": "{{network_protocol}}",
+											"host": [
+												"{{ip_address}}"
+											],
+											"port": "{{network_port}}",
+											"path": [
+												"Outlets",
+												"api",
+												"outlets",
+												"{{outlet_key}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "state",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"content-type": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{network_protocol}}://{{ip_address}}:{{network_port}}/Outlets/api/outlets/{{outlet_key}}",
+											"protocol": "{{network_protocol}}",
+											"host": [
+												"{{ip_address}}"
+											],
+											"port": "{{network_port}}",
+											"path": [
+												"Outlets",
+												"api",
+												"outlets",
+												"{{outlet_key}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.variables.set(\"outlet_key\", 2);"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.variables.set(\"outlet_key\", 2);"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Bedroom wall light",
+			"item": [
+				{
+					"name": "json",
+					"item": [
+						{
+							"name": "state",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{network_protocol}}://{{ip_address}}:{{network_port}}/Outlets/api/outlets/{{outlet_key}}",
+									"protocol": "{{network_protocol}}",
+									"host": [
+										"{{ip_address}}"
+									],
+									"port": "{{network_port}}",
+									"path": [
+										"Outlets",
+										"api",
+										"outlets",
+										"{{outlet_key}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "on",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"state\": \"on\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{network_protocol}}://{{ip_address}}:{{network_port}}/Outlets/api/outlets/{{outlet_key}}",
+									"protocol": "{{network_protocol}}",
+									"host": [
+										"{{ip_address}}"
+									],
+									"port": "{{network_port}}",
+									"path": [
+										"Outlets",
+										"api",
+										"outlets",
+										"{{outlet_key}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "off",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
 									"raw": "{\"state\": \"off\"}",
@@ -1135,7 +1673,13 @@
 							"name": "state",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
 									"raw": "{{network_protocol}}://{{ip_address}}:{{network_port}}/Outlets/api/outlets/{{outlet_key}}",
 									"protocol": "{{network_protocol}}",
@@ -1160,7 +1704,13 @@
 							},
 							"request": {
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
 									"raw": "{\"state\": \"on\"}",
@@ -1194,7 +1744,13 @@
 							},
 							"request": {
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
 									"raw": "{\"state\": \"off\"}",
